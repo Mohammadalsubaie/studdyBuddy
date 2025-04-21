@@ -227,7 +227,7 @@ export default function ProfileScreen() {
         <Text style={styles.footerText}>
         Mohammad Alsubaie
         </Text>
-        <Text style={styles.versionText}>Version 1.0.0</Text>
+       
       </View>
       
      
