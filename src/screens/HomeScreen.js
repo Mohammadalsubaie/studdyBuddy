@@ -25,7 +25,7 @@ export default function HomeScreen({ navigation }) {
     
     setLoading(true);
     try {
-      // Fetch tasks
+    
       const tasksRef = collection(db, "users", auth.currentUser.uid, "tasks");
       const tasksSnapshot = await getDocs(tasksRef);
       
@@ -40,13 +40,13 @@ export default function HomeScreen({ navigation }) {
         }
       });
       
-      // Sort by due date and get only upcoming 3
+      
       tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
       setUpcomingTasks(tasks.slice(0, 3));
       setCompletedTasks(completed);
       setTotalTasks(tasks.length + completed);
       
-      // Fetch sessions
+    
       const sessionsRef = collection(db, "users", auth.currentUser.uid, "sessions");
       const sessionsSnapshot = await getDocs(sessionsRef);
       
@@ -164,7 +164,7 @@ export default function HomeScreen({ navigation }) {
           CS475 - Mobile Development
         </Text>
         <Text style={styles.footerText}>
-          CRN: Your CRN - Group Members Names
+        Mohammad Alsubaie
         </Text>
       </View>
     </ScrollView>

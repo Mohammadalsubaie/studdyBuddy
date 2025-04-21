@@ -169,7 +169,8 @@ export default function ScheduleScreen() {
     if (selectedTime) {
       setStartTime(selectedTime);
       
-      // If end time is earlier than start time, set end time to start time + 1 hour
+      // set end time to start time + 1 hour if the end time is erlier
+      // 
       if (selectedTime > endTime) {
         const newEndTime = new Date(selectedTime);
         newEndTime.setHours(newEndTime.getHours() + 1);
@@ -282,12 +283,12 @@ export default function ScheduleScreen() {
             CS475 - Mobile Development
           </Text>
           <Text style={styles.footerText}>
-            CRN: Your CRN - Group Members Names
+          Mohammad Alsubaie
           </Text>
         </View>
       </ScrollView>
       
-      {/* Add/Edit Session Modal */}
+     
       <Modal
         animationType="slide"
         transparent={true}

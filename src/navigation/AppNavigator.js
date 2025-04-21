@@ -8,11 +8,10 @@ import { onAuthStateChanged } from 'firebase/auth';
 
 const Stack = createStackNavigator();
 
-// Simple loading component
 const LoadingScreen = () => (
   <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
     <ActivityIndicator size="large" color="#007AFF" />
-    <Text style={{ marginTop: 10 }}>Loading...</Text>
+    <Text style={{ marginTop: 10 }}>Lodaing...</Text>
   </View>
 );
 

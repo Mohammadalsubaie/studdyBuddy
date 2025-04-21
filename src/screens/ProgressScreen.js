@@ -30,10 +30,10 @@ export default function ProgressScreen() {
       let totalTasks = 0;
       let completedTasks = 0;
       
-      // For tracking progress by subject
+     
       let subjects = {};
       
-      // For tracking weekly progress
+      
       let weekly = {
         Monday: { total: 0, completed: 0 },
         Tuesday: { total: 0, completed: 0 },
@@ -48,12 +48,12 @@ export default function ProgressScreen() {
         const task = doc.data();
         totalTasks++;
         
-        // Count by completion status
+       
         if (task.completed) {
           completedTasks++;
         }
         
-        // Count by subject
+        
         if (task.subject) {
           if (!subjects[task.subject]) {
             subjects[task.subject] = { total: 0, completed: 0 };
@@ -77,7 +77,7 @@ export default function ProgressScreen() {
         }
       });
       
-      // Calculate percentages for subjects
+      
       let subjectProgress = {};
       for (const subject in subjects) {
         const { total, completed } = subjects[subject];
@@ -89,7 +89,7 @@ export default function ProgressScreen() {
         };
       }
       
-      // Calculate percentages for weekly progress
+      
       let weeklyProgress = {};
       for (const day in weekly) {
         const { total, completed } = weekly[day];
@@ -210,7 +210,7 @@ export default function ProgressScreen() {
           CS475 - Mobile Development
         </Text>
         <Text style={styles.footerText}>
-          CRN: Your CRN - Group Members Names
+        Mohammad Alsubaie
         </Text>
       </View>
     </ScrollView>

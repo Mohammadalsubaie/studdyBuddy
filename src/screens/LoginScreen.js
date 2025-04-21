@@ -47,7 +47,8 @@ export default function LoginScreen({ navigation }) {
       <View style={styles.form}>
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="Enter your email address"
+          placeholderTextColor="#999"
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
@@ -55,7 +56,8 @@ export default function LoginScreen({ navigation }) {
         />
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder="Enter your password"
+          placeholderTextColor="#999"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
@@ -86,7 +88,7 @@ export default function LoginScreen({ navigation }) {
           CS475 - Mobile Development
         </Text>
         <Text style={styles.footerText}>
-          CRN: Your CRN - Group Members Names
+        Mohammad Alsubaie
         </Text>
       </View>
     </KeyboardAvoidingView>
@@ -125,6 +127,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
     backgroundColor: '#f9f9f9',
+    fontSize: 16,
   },
   button: {
     backgroundColor: '#007AFF',

@@ -225,12 +225,12 @@ export default function ProfileScreen() {
           CS475 - Mobile Development
         </Text>
         <Text style={styles.footerText}>
-          CRN: Your CRN - Group Members Names
+        Mohammad Alsubaie
         </Text>
         <Text style={styles.versionText}>Version 1.0.0</Text>
       </View>
       
-      {/* Edit Name Modal */}
+     
       <Modal
         animationType="slide"
         transparent={true}
@@ -266,7 +266,7 @@ export default function ProfileScreen() {
         </View>
       </Modal>
       
-      {/* Edit Password Modal */}
+     
       <Modal
         animationType="slide"
         transparent={true}

@@ -8,10 +8,11 @@ import {
   Modal, 
   TextInput,
   Alert,
-  RefreshControl
+  RefreshControl,
+  Platform
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import * as DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { 
   collection, 
   addDoc, 
@@ -57,7 +58,7 @@ export default function TasksScreen() {
         const task = { 
           id: doc.id, 
           ...taskData,
-          // Convert Firebase timestamp to JS Date if needed
+          // to Convert Firebase timestamp to JS Date if need
           dueDate: taskData.dueDate instanceof Timestamp ? 
             taskData.dueDate.toDate() : 
             new Date(taskData.dueDate)
@@ -183,7 +184,7 @@ export default function TasksScreen() {
     }
   };
 
-  // Toggle task completion status
+  
   const toggleTaskCompletion = async (task) => {
     if (!task || !task.id) return;
     
@@ -191,13 +192,13 @@ export default function TasksScreen() {
     try {
       const taskRef = doc(db, "users", auth.currentUser.uid, "tasks", task.id);
       
-      // Update completion status
+      
       await updateDoc(taskRef, {
         completed: !task.completed,
         completedAt: !task.completed ? new Date().toISOString() : null
       });
       
-      // Refresh tasks
+      
       fetchTasks();
     } catch (error) {
       console.error("Error toggling task completion: ", error);
@@ -207,12 +208,12 @@ export default function TasksScreen() {
     }
   };
 
-  // Edit task
+ 
   const editTask = (task) => {
     setTitle(task.title);
     setDescription(task.description || '');
     
-    // Handle date conversion
+   
     try {
       setDueDate(task.dueDate instanceof Date ? task.dueDate : new Date(task.dueDate));
     } catch (error) {
@@ -227,7 +228,7 @@ export default function TasksScreen() {
     setModalVisible(true);
   };
 
-  // Close modal and reset form
+  
   const closeModal = () => {
     setModalVisible(false);
     setTitle('');
@@ -239,15 +240,19 @@ export default function TasksScreen() {
     setCurrentTaskId(null);
   };
 
-  // Handle date picker changes
+  
   const handleDateChange = (event, selectedDate) => {
-    setShowDatePicker(false);
+   
+    if (Platform.OS === 'android') {
+      setShowDatePicker(false);
+    }
+    
     if (selectedDate) {
       setDueDate(selectedDate);
     }
   };
 
-  // Simple TaskItem component
+  
   const TaskItem = ({ task }) => (
     <TouchableOpacity 
       style={{
@@ -421,12 +426,12 @@ export default function TasksScreen() {
             CS475 - Mobile Development
           </Text>
           <Text style={styles.footerText}>
-            CRN: Your CRN - Group Members Names
+          Mohammad Alsubaie
           </Text>
         </View>
       </ScrollView>
       
-      {/* Add/Edit Task Modal */}
+     
       <Modal
         animationType="slide"
         transparent={true}
@@ -449,6 +454,7 @@ export default function TasksScreen() {
               <TextInput
                 style={styles.input}
                 placeholder="Task title"
+                placeholderTextColor="#999"
                 value={title}
                 onChangeText={setTitle}
               />
@@ -457,6 +463,7 @@ export default function TasksScreen() {
               <TextInput
                 style={[styles.input, styles.textArea]}
                 placeholder="Add details"
+                placeholderTextColor="#999"
                 value={description}
                 onChangeText={setDescription}
                 multiline
@@ -476,10 +483,12 @@ export default function TasksScreen() {
               
               {showDatePicker && (
                 <DateTimePicker
+                  testID="dateTimePicker"
                   value={dueDate}
                   mode="date"
-                  display="default"
+                  display={Platform.OS === 'ios' ? 'spinner' : 'default'}
                   onChange={handleDateChange}
+                  style={Platform.OS === 'ios' ? styles.iOSPicker : {}}
                 />
               )}
               
@@ -521,6 +530,7 @@ export default function TasksScreen() {
               <TextInput
                 style={styles.input}
                 placeholder="e.g. Math, History"
+                placeholderTextColor="#999"
                 value={subject}
                 onChangeText={setSubject}
               />
@@ -781,6 +791,11 @@ const styles = StyleSheet.create({
   dateText: {
     fontSize: 16,
     color: '#333',
+  },
+  iOSPicker: {
+    width: '100%',
+    height: 200,
+    marginBottom: 16,
   },
   priorityButtons: {
     flexDirection: 'row',

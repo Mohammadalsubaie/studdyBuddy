@@ -7,7 +7,7 @@ import RegisterScreen from '../screens/RegisterScreen';
 
 const FallbackScreen = ({ route }) => (
   <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>Screen {route.name} not implemented yet</Text>
+    <Text>Screen {route.name} not ipmlemented yet</Text>
   </View>
 );
 

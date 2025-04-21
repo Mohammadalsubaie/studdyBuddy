@@ -106,7 +106,7 @@ import {
     }
   };
   
-  // Mark a task as complete/incomplete
+  // Mark a task if it's comple or not complete
   export const toggleTaskCompletion = async (taskId, isCompleted) => {
     try {
       if (!auth.currentUser) throw new Error("User not authenticated");

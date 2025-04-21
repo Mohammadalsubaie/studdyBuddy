@@ -41,7 +41,7 @@ export default function RegisterScreen({ navigation }) {
         displayName: name
       });
       
-      // Create user document in Firestore
+       // for createng user doc in firebase firestore
       await setDoc(doc(db, "users", user.uid), {
         name,
         email,
@@ -70,13 +70,15 @@ export default function RegisterScreen({ navigation }) {
       <View style={styles.form}>
         <TextInput
           style={styles.input}
-          placeholder="Full Name"
+          placeholder="Enter your full name"
+          placeholderTextColor="#999"
           value={name}
           onChangeText={setName}
         />
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="Enter your email address"
+          placeholderTextColor="#999"
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
@@ -84,14 +86,16 @@ export default function RegisterScreen({ navigation }) {
         />
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder="Create a password (min. 6 characters)"
+          placeholderTextColor="#999"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
         <TextInput
           style={styles.input}
-          placeholder="Confirm Password"
+          placeholder="Confirm your password"
+          placeholderTextColor="#999"
           value={confirmPassword}
           onChangeText={setConfirmPassword}
           secureTextEntry
@@ -122,7 +126,7 @@ export default function RegisterScreen({ navigation }) {
           CS475 - Mobile Development
         </Text>
         <Text style={styles.footerText}>
-          CRN: Your CRN - Group Members Names
+         Mohammad Alsubaie
         </Text>
       </View>
     </KeyboardAvoidingView>
@@ -161,6 +165,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
     backgroundColor: '#f9f9f9',
+    fontSize: 16,
   },
   button: {
     backgroundColor: '#007AFF',
